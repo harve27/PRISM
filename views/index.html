@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Prism | Home</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- mobile rendering-->
+
+    <!-- Bootstrap CDN, provide support for CSS, jQuery, Javascript (in order)-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="/client.js"></script>
+    <!-- CSS Sylesheets -->
+    <link rel="stylesheet" href="/style.css" />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=OpenSans"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    
+  </head>
+
+  <body>
+    
+    <!-- navbar -->
+    <nav
+      class="navbar navbar-default navbar-static-top navbar-inverse navbar-custom"
+      role="navigation"
+      style= "margin-bottom: 0px;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/views/index.html">P R I S M</a>
+        </div>
+        
+         <h4 class="tagline navbar-text navbar-left"><i>Serving our local businesses always</i></h4>
+        
+        <!--
+        <ul class="nav navbar-nav">
+        </ul>
+        -->
+  
+        <!-- If time, implement to be responsive framework -->
+        <form class="navbar-form navbar-right" action="pages/search.html">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search"
+              name="search"
+              id="search"
+            />
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        
+        <ul class = "nav navbar-nav navbar-right">
+          <button class ="bizbut1" onclick="document.getElementById('id02').style.display='block'"> <i class ="fas fa-sign-in-alt"></i> Login </button>
+        </ul>
+                
+      </div>
+    </nav>
+    
+    <script>
+      var modal = document.getElementById('id01');
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }  
+  </script>  
+  
+  <div id="id01" class="modal">
+  
+    <form class="modal-content animate" action="/signUp" method="get">
+      <div class="signUpBar">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <h3>Sign up</h3>
+      </div>
+      
+  
+      <div class="container">
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+  
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+        
+        <label for="name"><b>Business Name</b></label>
+        <input type="text" placeholder="Enter Business Name" name="name" required>
+        
+        <p><i>Note: Don't worry about other pertinent information. You can enter it in later.</i></p>
+        
+        <button type="submit" class= "submit-button">Sign Up</button> <!-- submit button -->
+        
+      </div>
+  
+    </form>
+    
+  </div>
+    
+    <script>
+        var modal2 = document.getElementById('id02');
+  
+      window.onclick = function(event) {
+          if (event.target == modal2) {
+              modal2.style.display = "none";
+          }
+      }  
+    </script>  
+    
+    <div id="id02" class="modal">
+    
+      <form class="modal-content animate" action="/logIn" method="get"> <!-- change action -->
+        <div class="signUpBar">
+          <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <h3>Log in</h3>
+        </div>
+    
+        <div class="container">
+          <label for="username"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="username" required>
+    
+          <label for="password"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" required>
+          
+          <button type="submit" class= "submit-button">Log In</button> <!-- submit button -->
+          
+        </div>
+    
+      </form>
+      
+    </div>
+      
+      <!-- jumbotron -->
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">In the <strong>COVID-19 Pandemic</strong>...</h1>
+          <p class="lead">
+            Prism connects small businesses with clients eager to support their local communities and get better service. 
+            In these challenging times, we need to lift each other up. Prism is a dedicated program to provide small businesses with a marketplace to sell,
+            and customers with an easy, affordable way to support their community.
+          </p>
+          
+          <button class = "btn btn-primary btn-lg bizbut" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+            Business owners - sign up here!
+          </button>
+          
+          
+        </div>
+    </div>
+    
+  <!-- Example carousel - will be used to display featured business -->
+      <div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <img
+                src="https://wordstream-files-prod.s3.amazonaws.com/s3fs-public/styles/simple_image/public/images/media/images/facebook-local-businesses-resized_0.jpg?55va7qUb6jd2lS9tldUy.BHbP4B.3JVp&itok=WU6dlsbr"
+                alt="Prism-stockphoto1"
+                style="width:100%; height:600px"
+              />
+            </div>
+
+            <div class="item">
+              <img
+                src="https://searchengineland.com/figz/wp-content/seloads/2015/07/small-business-shops-ss-1920.jpg"
+                alt="Prism-stockphoto2"
+                style="width:100%; height:600px"
+              />
+            </div>
+
+            <div class="item">
+              <img
+                src="https://wordtracker-swoop-uploads.s3.amazonaws.com/uploads/ckeditor/pictures/2966/content_local_business.png"
+                alt="Prism-stockphoto3"
+                style="width:100%; height:600px"
+              />
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="right carousel-control"
+            href="#myCarousel"
+            data-slide="next"
+          >
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      
+      <br>
+      <h1 style="text-align:center;">
+        View some featured businesses here!
+      </h1>
+    
+      <!-- Table for text boxes -->
+      <table>
+        <tr>
+          <th>
+            <!-- One text box = Company Name, contact info, images?, link -->
+            <div class="textBox1">
+              <a id="blink0" href="#" target="_blank">
+                <h3 id="name0">business</h3>
+              </a>
+            </div>
+          </th>
+          <th>
+            <div class="textBox1">
+              <a id="blink1" href="#" target="_blank">
+                <h3 id="name1">business</h3>
+              </a>
+            </div>
+          </th>
+          <th>
+            <div class="textBox1">
+              <a id="blink2" href="#" target="_blank">
+                <h3 id="name2">business</h3>
+              </a>
+            </div>
+          </th>
+        </tr>
+        <!--<tr>
+          <td>
+            <div class="textBox1">
+              <a href="#" target="_blank">
+                <h3>business</h3>
+                <p>contact info</p>
+              </a>
+            </div>
+          </td>
+          <td>
+            <div class="textBox1">
+              <a href="#" target="_blank">
+                <h3>business</h3>
+                <p>contact info</p>
+              </a>
+            </div>
+          </td>
+          <td>
+            <div class="textBox1">
+              <a href="#" target="_blank">
+                <h3>business</h3>
+                <p>contact info</p>
+              </a>
+            </div>
+          </td>
+        </tr> -->
+      </table>
+    
+    <script>
+      window.onload = function() {
+      var req = new XMLHttpRequest();
+      req.open("GET",`/getRecommended`);
+      req.onload = function() {
+        response = JSON.parse(this.responseText);
+        console.log(response);
+        for ( var i in response ) {
+          document.getElementById(`name${i}`).innerText = response[i].name;
+        }
+      }
+      req.send();
+      }
+    </script>
+    
+  </body>
+  
+</html>
