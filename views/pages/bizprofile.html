@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Prism | Profile</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- mobile rendering-->
+
+    <!-- Bootstrap CDN, provide support for CSS, jQuery, Javascript (in order)-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="/client.js"></script>
+    <!-- CSS Sylesheets -->
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  </head>
+
+  <body class = "bizprofile">
+
+        <!-- navbar -->
+    <nav
+      class="navbar navbar-default navbar-static-top navbar-inverse navbar-custom"
+      role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/views/index.html">P R I S M</a>
+        </div>
+        
+         <h4 class="tagline navbar-text navbar-left"><i>Serving our local businesses always</i></h4>
+  
+        <!-- If time, implement to be responsive framework -->
+        <form class="navbar-form navbar-right" action="search.html">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search"
+              name="search"
+              id="search"
+            />
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        
+        <ul class = "nav navbar-nav navbar-right">
+          <button class ="bizbut1" onclick="document.getElementById('id02').style.display='block'"> <i class ="fas fa-sign-in-alt"></i> Login </button>
+        </ul>
+                
+      </div>
+    </nav>
+       
+ <div class = "container custom-cont1">  <!-- change to fluid -->
+  
+  <div class = "row"> 
+    
+    <div class = "col col-lg-6"> 
+  
+      <div class="main1">
+        <h2 id = "nameBiz">
+          <b>Your company here</b>
+        </h2>
+        <div class = "textBox2">
+          <h4>Address</h4>
+          <p id="address">No Address Found</p>
+          <p id="zipcode">No Zip Code Found</p>
+        </div>
+        <div class = "textBox2">
+          <h4>Business Description</h4>
+          <p id="description">No Description Found</p>
+        </div>
+        <div class = "textBox2">
+          <h4>Tags</h4>
+          <p id="tags">No Tags Found</p>
+        </div>
+        <div class = "textBox2">
+          <h4>Website and Contact Info</h4>
+          <p id="phone">No Phone Number Found</p>
+          <p id="email">No Email Found</p>
+          <p id="url">No Website Linked</p>
+        </div>
+        <div class = "textBox2">
+          <h4>COVID Restrictions</h4>
+          <p id="covidRestrictions">Inform customers about your COVID-specific restrictions</p>
+        </div>
+      </div>
+    
+    </div>
+    
+  </div>
+   
+  <br>
+  
+  <div id="ownerButtons" class = "row">
+    
+   <a href = "javascript: goWithQs('revise.html')">
+    <div class = "col col-lg-6">
+        <button class = "bizbut3">
+          Revise business information
+      </button>
+    </div>
+  </a>
+    
+  <a href = "javascript: goWithQs('analytics.html')">
+    <div class = "col col-lg-6">
+      <button class = "bizbut3">
+        Check out the Analytics page!
+      </button>
+    </div>
+</a>
+    
+    
+  </div>
+   
+   <div id="customerButtons" class="row">
+     <a href = "javascript: goWithQs('survey.html')">
+    <div class = "col col-lg-6">
+      <button class = "bizbut3">
+        Been here? Fill out a survey!
+      </button>
+    </div>
+   </div>
+    
+</div> 
+    
+    <head>
+      <script>
+
+          var name, address, description, tags, zipcode, phone, email, url,
+            covidRestrictions, schedule, lat, long, distance;
+
+        var response;
+
+        var params = new URLSearchParams(window.location.search);
+        var req = new XMLHttpRequest();
+        req.open("GET",`/getBusiness${location.search}`);
+        req.onload = function() {
+          response = JSON.parse(this.responseText);
+          
+          id = response.id;
+          name = response.name;
+          address = response.address;
+          description = response.description;
+          tags = response.tags;
+          zipcode = response.zipcode;
+          phone = response.phone;
+          email = response.email;
+          url = response.url;
+          covidRestrictions = response.covidRestrictions;
+          schedule = response.schedule;
+          lat = response.lat;
+          long = response.long;
+          distance = response.distance;
+          
+          console.log(response);
+          
+          //document.getElementById("nameBiz").innerHTML = name;
+          
+          /*
+          var modal = document.createElement("div");
+          modal.className = "panel panel-default";
+          var body = document.createElement("div");
+          body.className = "panel-body";
+          var link = document.createElement("a");
+          body.appendChild(link);
+          var desc = document.createElement("p");
+          desc.innerText = `${address}\n${phone}`;
+          body.appendChild(desc);
+          modal.appendChild(body);
+          document.getElementById("results").appendChild(modal);
+          */
+          
+          document.getElementById("nameBiz").innerHTML = name;
+          if(address){
+            document.getElementById("address").innerHTML = address;
+          }    
+          
+          if(description){
+            document.getElementById("description").innerHTML = description;
+          }
+        
+          if(tags){
+            document.getElementById("tags").innerHTML = tags;
+          }
+         
+          if(zipcode){
+            document.getElementById("zipcode").innerHTML = zipcode;
+          }
+          
+          if(phone){
+            document.getElementById("phone").innerHTML = phone;
+          }
+          
+          if(email){
+            document.getElementById("email").innerHTML = email;
+          }
+          
+          if(url){
+            document.getElementById("url").innerHTML = url;
+          }
+          
+          if(covidRestrictions){
+            document.getElementById("covidRestrictions").innerHTML = covidRestrictions;
+          }
+          
+          
+      }
+      req.send();
+        
+        var checkReq = new XMLHttpRequest();
+        checkReq.open("GET",`/checkToken${location.search}`);
+        checkReq.onload = function() {
+          var text = this.responseText;
+          if ( text == "true" ) {
+            document.getElementById("ownerButtons").style.display = "inline";
+            document.getElementById("customerButtons").style.display = "none";
+          } else {
+            document.getElementById("ownerButtons").style.display = "none";
+            document.getElementById("customerButtons").style.display = "inline";
+          }
+        }
+        checkReq.send();
+        
+        function goWithQs(path) {
+          location.href = `${path}${location.search}`;
+        }
+
+      </script>
+    </head>
+  </body>
+</html>

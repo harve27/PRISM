@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Prism | Search</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- mobile rendering-->
+
+    <!-- Bootstrap CDN, provide support for CSS, jQuery, Javascript (in order)-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="/client.js"></script>
+    <!-- CSS Sylesheets -->
+    <link rel="stylesheet" href="/style.css" />
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  </head>
+
+  <body>
+    
+<!-- navbar -->
+    <nav
+      class="navbar navbar-default navbar-static-top navbar-inverse navbar-custom"
+      role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/views/index.html">P R I S M</a>
+        </div>
+        
+         <h4 class="tagline navbar-text navbar-left"><i>Serving our local businesses always</i></h4>
+        
+        <!--
+        <ul class="nav navbar-nav">
+        </ul>
+        -->
+  
+        <!-- If time, implement to be responsive framework -->
+        <form class="navbar-form navbar-right" action="search.html">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search"
+              name="search"
+              id="search"
+            />
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        
+        <ul class = "nav navbar-nav navbar-right">
+          <button class ="bizbut1" onclick="document.getElementById('id02').style.display='block'"> <i class ="fas fa-sign-in-alt"></i> Login </button>
+        </ul>
+                
+      </div>
+  </nav>
+    
+    <div id="results">
+    </div>
+    
+    <script>
+      
+      <!-- Figure out a way to dynamically create cards with business information based on a written search query -->
+      <!-- Convert JSON object to JS object, -->
+      
+      var id, name, address, description, tags, zipcode, phone, email, url,
+          covidRestrictions, schedule, lat, long, distance;
+      
+      var response; 
+      
+      var params = new URLSearchParams(window.location.search);
+      var req = new XMLHttpRequest();
+      req.open("GET",`/search?search=${params.get("search")}`);
+      req.onload = function() {
+        response = JSON.parse(this.responseText);
+        for ( var i in response ) {
+          id = response[i].id;
+          name = response[i].name;
+          address = response[i].address;
+          description = response[i].description;
+          tags = response[i].tags;
+          zipcode = response[i].zipcode;
+          phone = response[i].phone;
+          email = response[i].email;
+          url = response[i].url;
+          covidRestrictions = response[i].covidRestrictions;
+          schedule = response[i].schedule;
+          lat = response[i].lat;
+          long = response[i].long;
+          distance = response[i].distance;
+          
+          var modal = document.createElement("div");
+          modal.className = "panel panel-default";
+          var body = document.createElement("div");
+          body.className = "panel-body";
+          var link = document.createElement("a");
+          link.innerText = name;
+          link.href = `/pages/bizprofile.html?id=${id}`;
+          body.appendChild(link);
+          var desc = document.createElement("p");
+          desc.innerText = `${address}\n${phone}`;
+          body.appendChild(desc);
+          modal.appendChild(body);
+          document.getElementById("results").appendChild(modal);
+        }
+      }
+      req.send();
+    </script>
+  </body>
+</html>

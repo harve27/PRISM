@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Prism | Profile</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- mobile rendering-->
+
+    <!-- Bootstrap CDN, provide support for CSS, jQuery, Javascript (in order)-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="/client.js"></script>
+    <!-- CSS Sylesheets -->
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  </head>
+
+  <body class = "bizprofile"> 
+
+<!-- navbar -->
+<nav
+      class="navbar navbar-default navbar-static-top navbar-inverse navbar-custom"
+      role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/views/index.html">P R I S M</a>
+        </div>
+        
+         <h4 class="tagline navbar-text navbar-left"><i>Serving our local businesses always</i></h4>
+  
+        <form class="navbar-form navbar-right" action="search.html">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search"
+              name="search"
+              id="search"
+            />
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        
+        <ul class = "nav navbar-nav navbar-right">
+          <button class ="bizbut1" onclick="document.getElementById('id02').style.display='block'"> <i class ="fas fa-sign-in-alt"></i> Login </button>
+        </ul>
+                
+      </div>
+    </nav>
+  
+  <div class = "container">
+    <div class ="row">
+      <div class = "col col-lg-12">
+        <h1 style = "text-align:center;"> 
+          Revise your profile here
+        </h1>
+        
+
+          
+          <br>
+          
+          <label for="name"><b>Business Name</b></label>
+          <input type="text" placeholder="Enter Business Name" id="name" name="name">
+          
+          <label for="address"><b>Address</b></label>
+          <input type="text" placeholder="Enter Address" id="address" name="address">
+          
+          <label for="description"><b>Description</b></label>
+          <input type="text" placeholder="Enter Description" id="description" name="description">
+          
+          <label for="zipcode"><b>Zipcode</b></label>
+          <input type="text" placeholder="Enter Business Zipcode" id="zipcode" name="zipcode">
+          
+          <!-- Change input style?? -->
+          <label for="phone"><b>Phone Number</b></label>
+          <input type="text" placeholder="Enter Phone Number" id="phone" name="phone">
+          
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" id="email" name="email">
+          
+          <label for="tags"><b>Tags</b></label>
+          <input type="text" placeholder="Enter Tags" id="tags" name="tags">
+          
+          <label for="url"><b>Business URL</b></label>
+          <input type="text" placeholder="Enter Business URL" id="url" name="url">
+          
+          <label for="covidRestrictions"><b>COVID Restrictions</b></label>
+          <input type="text" placeholder="Enter COVID Restrictions" id="covidRestrictions" name="covidRestrictions">
+       
+          <label for="minPrice"><b>Minimum Price</b></label>
+          <input type="number" placeholder="Enter minimum price" id="priceMin" name="minPrice">
+        
+          <label for="maxPrice"><b>Maximum Price</b></label>
+          <input type="number" placeholder="Enter Maximum Price" id="priceMax" name="maxPrice">
+        
+          <label for="avgPrice"><b>Average Price</b></label>
+          <input type="number" placeholder="Enter Average Price" id="priceAvg" name="avgPrice">
+        
+          <button type="submit" onclick="submit()" class= "bizbut3">Revise</button> <!-- submit button -->
+                   
+        
+        
+      </div>
+      
+    </div>
+    </div>
+    
+    <script>
+      var name, address, description, tags, zipcode, phone, email, url,
+            covidRestrictions, schedule, lat, long, distance, minPrice, maxPrice, avgPrice;
+
+        var response;
+
+        var params = new URLSearchParams(window.location.search);
+        var req = new XMLHttpRequest();
+        req.open("GET",`/getBusiness${location.search}`);
+        req.onload = function() {
+          response = JSON.parse(this.responseText);
+          
+          id = response.id;
+          name = response.name;
+          address = response.address;
+          description = response.description;
+          tags = response.tags;
+          zipcode = response.zipcode;
+          phone = response.phone;
+          email = response.email;
+          url = response.url;
+          covidRestrictions = response.covidRestrictions;
+          schedule = response.schedule;
+          lat = response.lat;
+          long = response.long;
+          distance = response.distance;
+          
+          minPrice = response.priceMin;
+          maxPrice = response.priceMax;
+          avgPrice = response.priceAvg;
+          
+          console.log(response);
+          
+          //document.getElementById("nameBiz").innerHTML = name;
+          
+          /*
+          var modal = document.createElement("div");
+          modal.className = "panel panel-default";
+          var body = document.createElement("div");
+          body.className = "panel-body";
+          var link = document.createElement("a");
+          body.appendChild(link);
+          var desc = document.createElement("p");
+          desc.innerText = `${address}\n${phone}`;
+          body.appendChild(desc);
+          modal.appendChild(body);
+          document.getElementById("results").appendChild(modal);
+          */
+          
+          document.getElementById("name").value = name;
+          if(address){
+            document.getElementById("address").value = address;
+          }    
+          
+          if(description){
+            document.getElementById("description").value = description;
+          }
+        
+          if(tags){
+            document.getElementById("tags").value = tags;
+          }
+         
+          if(zipcode){
+            document.getElementById("zipcode").value = zipcode;
+          }
+          
+          if(phone){
+            document.getElementById("phone").value = phone;
+          }
+          
+          if(email){
+            document.getElementById("email").value = email;
+          }
+          
+          if(url){
+            document.getElementById("url").value = url;
+          }
+          
+          if(covidRestrictions){
+            document.getElementById("covidRestrictions").value = covidRestrictions;
+          }
+          
+          if(priceMin) {
+            document.getElementById("priceMin").value = priceMin;
+          }
+          
+          if(priceMax) {
+            document.getElementById("priceMax").value = priceMax;
+          }
+          
+          if(priceAvg) {
+            document.getElementById("priceAvg").value = priceAvg;
+          }
+          
+      }
+      req.send();
+      
+      function submit() {
+        alert("Updated!")
+        var originalQs = location.search;
+        
+        var req = new XMLHttpRequest();
+        var items = [
+          "name",
+          "address",
+          "description",
+          "tags",
+          "zipcode",
+          "phone",
+          "email",
+          "url",
+          "covidRestrictions",
+          "priceMin",
+          "priceMax",
+          "priceAvg"
+        ];
+        
+        var qs = location.search;
+        for ( var i in items ) {
+          qs += `&${items[i]}=${document.getElementById(items[i]).value}`;
+        }
+        console.log(qs);
+        
+        req.open("GET",`/updateBusiness${qs}`);
+        req.onload = function() {
+          location.href = `/pages/bizprofile.html${originalQs}`;
+        }
+        req.send();
+      }
+    </script>
+    
+  </body>
+</html>
