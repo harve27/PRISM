@@ -1,4 +1,6 @@
-# hello-sqlite
+# BBN Hacks Hackathon 2021
+
+hello-sqlite
 
 A starter that has a database
 
