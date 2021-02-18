@@ -1,4 +1,6 @@
-# BBN Hacks Hackathon 2021
+# BBNHacks Hackathon 2021 - PRISM
+
+- Small business website with business analytics technology. 
 
 hello-sqlite
 
