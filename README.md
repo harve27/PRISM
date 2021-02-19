@@ -1,4 +1,4 @@
-# BBNHacks Hackathon 2021 - PRISM
+# Jan. Hackathon 2021 - PRISM
 
 - Small business website with business analytics technology. 
 
